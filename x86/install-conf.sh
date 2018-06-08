@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Basic
-hostname=revere-rhino-x86_64-1
+hostname=revere-lynx-x86_64
 
 root_password=changeMeNow
 
@@ -11,12 +11,12 @@ mirror=( Sweden )
 keymap=sv-latin1
 
 # Users
-user=( revere )
+user=( cfsd )
 user_password=( changeMeNow )
 group=( uucp )
 
 # Software configuration
-software="base-devel gnu-netcat vim ifplugd wget openssh bash-completion git cmake ccache screen wpa_supplicant wpa_actiond dosfstools ntfs-3g linux-headers"
+software="base-devel gnu-netcat vim ifplugd wget openssh bash-completion git cmake ccache screen wpa_supplicant wpa_actiond dosfstools ntfs-3g linux-headers dialog"
 service=( sshd )
 
 # Network
@@ -29,7 +29,7 @@ hdd=/dev/sda
 uefi=false
 if [ -d "/sys/firmware/efi/efivars" ]; then
   uefi=true
-  uefi_bad_impl=false
+  uefi_bad_impl=true
 fi
 
 for f in setup-chroot-*.sh; do
