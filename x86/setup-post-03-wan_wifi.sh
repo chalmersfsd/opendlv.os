@@ -1,8 +1,8 @@
 #!/bin/bash
 
-dev=( wlp0s20u1 )
-essid=( "ASTA2" "REVERE 2.4GHz")
-wpa2=( "pass1" "pass2" )
+dev=( wlp8s0 )
+essid=( "REVERE-2.4GHz")
+wpa2=( "pass1" )
 
 
 for (( i = 0; i < ${#dev[@]}; i++ )); do
