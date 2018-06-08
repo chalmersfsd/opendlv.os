@@ -2,7 +2,7 @@
 
 ROOT_URL=https://raw.githubusercontent.com/cfsd/opendlv.os/master/x86
 
-wget ${ROOT_URL}/{install,install-conf,install-chroot,install-post}.sh
+wget ${ROOT_URL}/{install,install-conf,install-chroot,install-post,setup-chroot-01-rtkernel,setup-post-01-router,setup-post-03-wan_wifi,setup-post-05-docker,setup-post-06-desktop}.sh
 
 mkdir setup-available
 cd setup-available
