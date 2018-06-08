@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ROOT_URL=https://raw.githubusercontent.com/chalmers-revere/opendlv.os/master/x86
+ROOT_URL=https://raw.githubusercontent.com/cfsd/opendlv.os/master/x86
 
 wget ${ROOT_URL}/{install,install-conf,install-chroot,install-post}.sh
 
