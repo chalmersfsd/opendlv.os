@@ -23,7 +23,7 @@ operating system capable of running the containerized OpenDLV framework.
 4. Download the automated scripts with:
 
    ```
-     wget https://raw.githubusercontent.com/cfsd/opendlv.os/master/x86/get.sh
+     wget https://raw.githubusercontent.com/cfsd/opendlv.os/lynx/x86/get.sh
      sh get.sh
    ```
 5. Enable the setups that you want to enable on the machine, e.g.:
