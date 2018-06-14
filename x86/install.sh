@@ -26,9 +26,8 @@ then
   mount ${hdd_esp} /mnt/boot
 fi
 
-for i in "${mirror[@]}"; do
-  grep -i -A 1 --no-group-separator $i /etc/pacman.d/mirrorlist >> mirrorlist
-done
+curl 'https://www.archlinux.org/mirrorlist/?country=SE&protocol=http&protocol=https&ip_version=4' -o mirrorlist
+sed -i '/Server/s/^#//g' mirrorlist
 mv mirrorlist /etc/pacman.d/mirrorlist
 
 pacman -Syy
