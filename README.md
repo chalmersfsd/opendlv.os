@@ -20,35 +20,52 @@ operating system capable of running the containerized OpenDLV framework.
    ```
      ip a
    ```
-4. Download the automated scripts with:
+
+4. Take a note for the name of the network card and the harddrive name you want to install. Will be used later on.
+  
+   ```
+    $ ip a 
+    ...
+    4: enp10s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    ...
+    $ lsblk
+    ...
+    sda           8:1    0 465.8G  0 disk
+    ...
+   ```
+
+    remember : Net: enp10s0 , wifi interface : wlp8s0  Disk: hdd: /dev/sda
+
+5. Download the automated scripts with:
 
    ```
      wget https://raw.githubusercontent.com/cfsd/opendlv.os/master/x86/get.sh
      sh get.sh
    ```
-5. Enable the setups that you want to enable on the machine, e.g.:
-
+6. Enable the setups that you want to enable on the machine, e.g.:
+  if you want the destop and graph card installed:   
    ```
-     cp setup-available/setup-chroot-01-rtkernel.sh .
-     cp setup-available/setup-post-01-router.sh .
+     cp setup-available/setup-post-06-desktop.sh .
    ```
-6. Configure the basic installation and the enabled setups. 
-   Important!! Please check the harddrive device name otherwise you might destroy your working harddrive. Choose the harddrive you would like to install on if you have more than one harddrive.
+7. Configure the basic installation and the enabled setups. 
+   
+   Important!! Please check the harddrive device name otherwise you might destroy your working harddrive. Keep/replace the harddrive name you would like to install on if you have more than one harddrive.
 
    Check the network interface name with 'ip a' and the harddrive device name with 'lsblk'.
-   Configure files, e.g:
 
+   Configure files, e.g:
+   change the ```root_password``` ,  ```user_password``` , ```lan_dev```, ```wan_dev```
    ```
-     nano install-conf.sh
-     nano setup-post-01-router.sh
-   ```
-7. Run the automated installation with (REMEMBER: all your data will be lost. You have been warned!):
+     nano install-conf.sh 
+   ``` 
+
+8. Run the automated installation with (REMEMBER: all your data will be lost. You have been warned!):
 
    ```
      chmod +x *.sh
      ./install.sh
    ```
-8. After the first computer restart you need to help it once more to get Internet, to finalize the installation. Run wifi-menu again or connect to the wired via 'dhcpcd'
+9. After the first computer restart you need to help it once more to get Internet, to finalize the installation. Run wifi-menu again or connect to the wired via 'dhcpcd'
 
 Todo
 - update Router-setup

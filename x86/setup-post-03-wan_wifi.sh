@@ -1,6 +1,7 @@
 #!/bin/bash
 
-dev=( wlp8s0 )
+# use the current wifi network interface name otherwise a wrong name will lead an extra 1.5mins' booting time.
+dev=( ${wan_dev} )
 essid=( "REVERE-2.4GHz")
 wpa2=( "pass1" )
 

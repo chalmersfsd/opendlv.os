@@ -2,7 +2,7 @@
 
 source install-conf.sh
 
-subnet=10.42.42.0
+subnet=10.42.2.0
 wan=( enp2s0 wlp0s20u1 ppp0 )
 dns="8.8.8.8"
 
@@ -35,7 +35,9 @@ dhcp_clients=(
 #  "gps,00:60:35:05:47:a1,112"
 #)
 
+#install dhcp
 pacman -S --noconfirm dhcp
+# 
 systemctl enable iptables
 
 base_ip=`echo $subnet | cut -d"." -f1-3`
@@ -44,8 +46,9 @@ broadcast_ip="$base_ip.255"
 
 echo -e "Description='Internal network'\nInterface=${lan_dev}\nConnection=ethernet\nIP=static\nIPCustom=('addr add dev ${lan_dev} $ip/24' 'route add 225.0.0.0/24 dev ${lan_dev}')\nSkipNoCarrier=yes" > /etc/netctl/${lan_dev}-static
 netctl enable ${lan_dev}-static
-
+# IP forwarding should be enabled when you want the system to act as a router, that is transfer IP packets from one network to another.
 echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/30-ipforward.conf
+# Reverse Path Forwarding is used to prevent packets that arrived via one interface from leaving via a different interface. 
 echo "net.ipv4.conf.eno1.rp_filter=0" > /etc/sysctl.d/40-rpfilter.conf
 
 iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
