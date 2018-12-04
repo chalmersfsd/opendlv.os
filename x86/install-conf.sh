@@ -20,8 +20,9 @@ software="base-devel gnu-netcat vim ifplugd wget openssh bash-completion git cma
 service=( sshd )
 
 # Network
-lan_dev=( enp10s0 )
-dhcp_dev=( ${lan_dev} )
+lan_dev = ( enp10s0 )
+wan_dev = ( wlp8s0 ) 
+dhcp_dev= ( ${lan_dev} )
 
 # Partitions
 hdd=/dev/sda
